@@ -10,12 +10,15 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import AuthProvider from './providers/AuthProvider';
+import ErrorPage from './error-page';
+import AddBlogs from './Pages/AddBlogs';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -28,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/addblogs',
+        element: <AddBlogs></AddBlogs>
       }
 
     ]

@@ -1,0 +1,44 @@
+[
+    {
+        "id": "01",
+        "title": "Exploring the Beautiful Beaches of Bali",
+        "image_url": "https://i.ibb.co/9Nv7VCd/beach.jpg",
+        "short_description": "Discover the pristine beaches of Bali and soak up the sun in paradise.",
+        "category": "Beach Destinations"
+    },
+    {
+        "id": "02",
+        "title": "Adventures in the Swiss Alps",
+        "image_url": "https://i.ibb.co/3ycXYXg/mountain.jpg",
+        "short_description": "Embark on thrilling adventures in the breathtaking Swiss Alps with stunning views.",
+        "category": "Mountain Escapes"
+    },
+    {
+        "id": "03",
+        "title":  "Cultural Immersion in Kyoto, Japan",
+        "image_url": "https://i.ibb.co/ydy2xxy/culture.jpg",
+        "short_description": "Experience the rich cultural heritage of Kyoto through temples and traditions.",
+        "category": "Cultural Experiences"
+    },
+    {
+        "id": "04",
+        "title": "Safari in the Serengeti, Tanzania",
+        "image_url": "https://i.ibb.co/JtWtfjQ/wildlife.jpg",
+        "short_description": "Witness the majestic wildlife of the Serengeti on an unforgettable safari adventure.",
+        "category": "Wildlife Encounters"
+    },
+    {
+        "id": "05",
+        "title": "Exploring the Ruins of the Colosseum, Rome",
+        "image_url": "https://i.ibb.co/SKmDwqv/historical.jpg",
+        "short_description": "Step back in time and explore the ancient Colosseum of Rome ",
+        "category": "Historical Sites"
+    },
+    {
+        "id": "06",
+        "title": "Island Hopping in the Greek Islands",
+        "image_url": "https://i.ibb.co/DKNRjZY/island.jpg",
+        "short_description": "Experience the charm of the Greek Islands with crystal-clear waters and picturesque villages.",
+        "category": "Island Getaways"
+    }
+]

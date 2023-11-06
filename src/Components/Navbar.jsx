@@ -19,9 +19,9 @@ const Navbar = () => {
     }
 
     const navbar =
-        <div className="flex">
+        <div className="flex align-items">
             <NavLink to='/'><li className="mr-4">Home</li></NavLink>
-            <NavLink><li className="mr-4">Add Blog</li></NavLink>
+            <NavLink to="/addblogs"><li className="mr-4">Add Blog</li></NavLink>
             <NavLink><li className="mr-4">All Blogs</li></NavLink>
             <NavLink><li className="mr-4">Featured Blog</li></NavLink>
             <NavLink><li>Wishlist</li></NavLink>
@@ -52,8 +52,8 @@ const Navbar = () => {
                 {
                     user ?
                         <>
-                            <span className="mr-2">{user.email}</span>
-                            <div className="w-10 rounded-full mr-2">
+                            <span className="mr-2 ml-4 bg-gray-200 rounded-lg shadow-lg p-2">{user.email}</span>
+                            <div className="w-10 rounded-full mr-2 ">
                                 <img className="w-8 lg:w-10  rounded-full " src={user.photoURL} />
                             </div>
                             <button onClick={handleLogOut} className="btn bg-red-400 w-24 btn-sm mr-2">Logout</button>
