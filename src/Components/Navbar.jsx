@@ -1,19 +1,34 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/image/logo.png"
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 
 const Navbar = () => {
 
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(res => {
+                console.log('user logged out', res)
+            })
+            .catch(error => {
+                console.Log(error)
+            })
+    }
+
     const navbar =
         <div className="flex">
-            <NavLink ><li className="mr-4">Home</li></NavLink>
+            <NavLink to='/'><li className="mr-4">Home</li></NavLink>
             <NavLink><li className="mr-4">Add Blog</li></NavLink>
             <NavLink><li className="mr-4">All Blogs</li></NavLink>
             <NavLink><li className="mr-4">Featured Blog</li></NavLink>
             <NavLink><li>Wishlist</li></NavLink>
         </div>
+
     return (
-        <div className="navbar bg-base-200 flex">
+        <div className="navbar bg-base-200 flex border-b border-gray-300">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -34,10 +49,26 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <button className="btn btn-accent btn-sm mr-2">Login</button>
-                <button className="btn btn-primary btn-sm mr-2">Register</button>
-                <button className="btn btn-secondary btn-sm mr-2">Logout</button>
-                
+                {
+                    user ?
+                        <>
+                            <span className="mr-2">{user.email}</span>
+                            <div className="w-10 rounded-full mr-2">
+                                <img className="w-8 lg:w-10  rounded-full " src={user.photoURL} />
+                            </div>
+                            <button onClick={handleLogOut} className="btn bg-red-400 w-24 btn-sm mr-2">Logout</button>
+                        </> :
+                        <>
+                            <Link to="/login"> <button className="btn bg-green-200 w-24 btn-sm mr-2">Login</button></Link>
+
+                            <Link to='/register'><button className="btn bg-blue-200 w-24 btn-sm mr-2">Register</button></Link>
+                        </>
+
+                }
+
+
+
+
             </div>
         </div>
     );
