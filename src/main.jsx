@@ -18,6 +18,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import AllBlogs from './Pages/AllBlogs';
+import PrivateRout from './Components/PrivateRout';
 
 
 const router = createBrowserRouter([
@@ -40,11 +41,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/addblogs',
-        element: <AddBlogs></AddBlogs>
+        element: <PrivateRout><AddBlogs></AddBlogs></PrivateRout>
       },
       {
-        path:'/allblogs',
-        element:<AllBlogs></AllBlogs>
+        path: '/allblogs',
+        element: <AllBlogs></AllBlogs>
       }
 
     ]
