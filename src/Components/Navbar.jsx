@@ -22,7 +22,7 @@ const Navbar = () => {
         <div className="flex align-items">
             <NavLink to='/'><li className="mr-4">Home</li></NavLink>
             <NavLink to="/addblogs"><li className="mr-4">Add Blog</li></NavLink>
-            <NavLink><li className="mr-4">All Blogs</li></NavLink>
+            <NavLink to='/allblogs'><li className="mr-4">All Blogs</li></NavLink>
             <NavLink><li className="mr-4">Featured Blog</li></NavLink>
             <NavLink><li>Wishlist</li></NavLink>
         </div>

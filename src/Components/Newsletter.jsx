@@ -12,7 +12,7 @@ const Newsletter = () => {
             <h2 className="uppercase font-bold text-gray-600">Newsletter</h2>
             <p className='text-gray-600'>Enter your email address</p>
             <div className='flex '>
-                <input className='w-64 p-2 rounded-l-lg' type="email" name="" placeholder='email' id="" />
+                <input className=' p-2 rounded-l-lg bg-gray-300' type="email" name="" placeholder='email' id="" />
                 <button className='btn rounded-none border-none rounded-r-lg bg-purple-300 ' onClick={handleSubscribe}>Subscribe</button>
                 <ToastContainer></ToastContainer>
 
