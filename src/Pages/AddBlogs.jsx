@@ -33,7 +33,7 @@ const AddBlogs = () => {
             })
 
 
-         form.reset()
+        form.reset()
     }
 
 
@@ -68,7 +68,7 @@ const AddBlogs = () => {
                     <label htmlFor="long_description">Long Description:</label>
                     <textarea className="w-full p-2" id="long_description" name="long_description" rows="4" required></textarea><br /><br />
                     <label htmlFor="current_time">Current Time: </label>
-                    <input className="p-2 mr-4 " type="datetime-local" id="current_time" name="time" />
+                    <input className="p-2 mr-4 " type="date" id="current_time" name="time" required />
 
                     <input className="btn btn-primary" type="submit" value="Submit" />
                 </form>

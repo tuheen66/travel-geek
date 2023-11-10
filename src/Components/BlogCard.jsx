@@ -1,14 +1,19 @@
 /* eslint-disable react/prop-types */
-
+import { motion } from "framer-motion"
 
 const BlogCard = ({ blog }) => {
 
-    
+
 
     const { title, image, category, short_description } = blog
 
     return (
-        <div className="card card-compact  bg-base-100 shadow-xl">
+        <motion.div
+            whileHover={{
+                scale: 1.1,
+                transition: { duration: .5 },
+            }}
+            className="card card-compact  bg-base-100 shadow-xl">
             <figure><img src={image} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
@@ -19,7 +24,7 @@ const BlogCard = ({ blog }) => {
                     <button className="btn btn-secondary btn-sm">Wishlist</button>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

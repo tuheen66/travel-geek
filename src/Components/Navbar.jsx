@@ -17,14 +17,13 @@ const Navbar = () => {
                 console.Log(error)
             })
     }
-
     const navbar =
         <div className="flex align-items">
-            <NavLink to='/'><li className="mr-4">Home</li></NavLink>
-            <NavLink to="/addblogs"><li className="mr-4">Add Blog</li></NavLink>
-            <NavLink to='/allblogs'><li className="mr-4">All Blogs</li></NavLink>
-            <NavLink><li className="mr-4">Featured Blog</li></NavLink>
-            <NavLink><li>Wishlist</li></NavLink>
+            <li className="mr-2"><NavLink to='/'>Home</NavLink></li>
+            <li className="mr-2"><NavLink to="/addblogs">Add Blog</NavLink></li>
+            <li className="mr-2"><NavLink to='/allblogs'>All Blogs</NavLink></li>
+            <li className="mr-2"><NavLink to='/featured'>Featured Blog</NavLink></li>
+            <li><NavLink to='/wish-list'>Wishlist</NavLink></li>
         </div>
 
     return (

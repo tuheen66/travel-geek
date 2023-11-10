@@ -5,6 +5,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { FaGoogle } from 'react-icons/fa';
+import axios from "axios";
 
 
 const Login = () => {
@@ -21,14 +22,26 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+
 
 
         signInUser(email, password)
             .then(res => {
                 console.log(res.user)
+                const loggedInUser = res.user
+                const user = { email }
+
+                console.log(loggedInUser)
+
                 toast("Login successful")
-                navigate(location?.state ? location.state : '/')
+                //  navigate(location?.state ? location.state : '/')
+
+                setError('')
+
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                    })
             })
             .catch(error => {
                 console.log(error)
@@ -38,11 +51,18 @@ const Login = () => {
 
     }
 
-    const handleGoogle = () => {
+    const handleGoogle = (email) => {
         googleSignIn()
             .then(res => {
-                console.log(res.user)
+                const loggedInUser = res.user
+                const user = { email }
+                console.log(loggedInUser)
                 navigate(location?.state ? location.state : '/')
+
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                    })
             })
     }
 

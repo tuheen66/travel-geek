@@ -6,7 +6,9 @@ import Newsletter from "../Components/Newsletter";
 import BlogCard from "../Components/BlogCard";
 
 
+
 const Home = () => {
+
 
     const { isPending, data: blogs } = useQuery({
         queryKey: ['blogs'],

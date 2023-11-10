@@ -14,7 +14,7 @@ const PrivateRout = ({ children }) => {
     if (loading) {
         return <Skeleton />
     }
-    if (user) {
+    if (user?.email) {
         return children
     }
     return <Navigate state={location.pathname} to='/login'></Navigate>

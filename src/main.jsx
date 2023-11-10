@@ -19,6 +19,8 @@ import {
 } from '@tanstack/react-query'
 import AllBlogs from './Pages/AllBlogs';
 import PrivateRout from './Components/PrivateRout';
+import WishList from './Pages/WishList';
+import FeaturedBlogs from './Pages/FeaturedBlogs';
 
 
 const router = createBrowserRouter([
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
       {
         path: '/allblogs',
         element: <AllBlogs></AllBlogs>
+      },
+      {
+        path: '/featured',
+        element: <FeaturedBlogs></FeaturedBlogs>
+      },
+      {
+        path: '/wish-list',
+        element: <PrivateRout><WishList></WishList></PrivateRout>
       }
 
     ]

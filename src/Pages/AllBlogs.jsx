@@ -5,6 +5,7 @@ import { useState } from "react";
 // import axios from "axios";
 
 
+
 const categories = [
     "Beach Destinations",
     "Mountain Escapes",
@@ -67,7 +68,9 @@ const AllBlogs = () => {
 
                     {
                         blogs?.map(blog => <AllBlogCard key={blog.id} blog={blog}></AllBlogCard>)
+                        
                     }
+
                 </div>
 
             </div>
