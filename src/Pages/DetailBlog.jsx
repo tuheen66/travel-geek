@@ -24,7 +24,9 @@ const DetailBlog = () => {
     useEffect(() => {
         axios.get('http://localhost:5000/comments')
             .then(data => {
-                setComments(data.data)
+                const items = data.data
+                const blogComments = items.filter(item=>item.id === id)
+                setComments(blogComments)
                 console.log(data.data)
 
             })
@@ -54,7 +56,7 @@ const DetailBlog = () => {
         const form = e.target;
         const comment = form.comment.value;
 
-        blogItem = { comment, name, profilePic }
+        blogItem = { comment, name, profilePic, id }
 
         fetch('http://localhost:5000/comments', {
             method: 'POST',
@@ -67,6 +69,7 @@ const DetailBlog = () => {
             .then(data => {
                 console.log(data)
             })
+        form.reset();
     }
 
 
@@ -99,12 +102,17 @@ const DetailBlog = () => {
 
                 {
                     comments.map(comment =>
-                        <div className=" border-b border-gray-300 w-1/3 mb-4 p-2" key={comment._id}>
-                            <div className="flex gap-4 mt-4 items-center">
-                                <h2>{comment.name}</h2>
-                                <img className="w-12 rounded-full" src={comment.profilePic} alt="" />
-                            </div >
-                            <p>{comment.comment}</p>
+                        <div className=" border-b border-gray-300 w-1/3 mb-4 p-2" key={comment.id}>
+                            
+                                <div>
+                                    <div className="flex gap-4 mt-4 items-center">
+                                        <h2>{comment.name}</h2>
+                                        <img className="w-12 rounded-full" src={comment.profilePic} alt="" />
+                                    </div >
+                                    <p>{comment.comment}</p>
+                                </div>
+                            
+
                         </div>)
                 }
 
