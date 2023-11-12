@@ -14,7 +14,7 @@ const AllBlogCard = ({ blog }) => {
     const { title, image, category, short_description } = blog
 
     const handleWishList = (blogItem) => {
-        console.log(blogItem)
+        
 
         blogItem = { image, title, short_description, category, email }
 
@@ -35,23 +35,7 @@ const AllBlogCard = ({ blog }) => {
 
 
 
-    // const handleDetail = (item) => {
-
-    //     item = { image, title, short_description, category, email }
-
-    //     fetch('http://localhost:5000/details', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(item)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data)
-    //         })
-    // }
-
+   
 
 
 
