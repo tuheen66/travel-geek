@@ -25,7 +25,7 @@ const DetailBlog = () => {
         axios.get('http://localhost:5000/comments')
             .then(data => {
                 const items = data.data
-                const blogComments = items.filter(item=>item.id === id)
+                const blogComments = items.filter(item => item.id === id)
                 setComments(blogComments)
                 console.log(data.data)
 
@@ -74,12 +74,6 @@ const DetailBlog = () => {
 
 
 
-
-
-
-
-    // const { title, image, category, short_description, long_description } = blog
-
     return (
         <div>
             <Navbar></Navbar>
@@ -89,7 +83,11 @@ const DetailBlog = () => {
                 <p><span className="font-bold">Short description:</span> {details.short_description}</p>
                 <p className="text-justify"><span className="font-bold"> Long description:</span>{details.long_description} </p>
             </div>
-            <div className="w-1/3 mb-12">
+            <div className={user.email !== details.email ? "hidden" : " flex justify-around mb-8"}>
+                <p className="italic font-semibold mb-8 text-red-400">Blog writer cannot comment on his/her own blog</p>
+                <button className="btn btn-accent">Update</button>
+            </div>
+            <div className={user.email === details.email ? "hidden" : "w-1/3 mb-12 block"}>
                 <form onSubmit={handleCommentSubmit} className="flex flex-col space-y-4">
                     <label className="font-bold" htmlFor="long_description">Your Comment:</label>
                     <textarea className="border border-gray-300 p-2" name="comment" rows="4" required></textarea>
@@ -103,20 +101,16 @@ const DetailBlog = () => {
                 {
                     comments.map(comment =>
                         <div className=" border-b border-gray-300 w-1/3 mb-4 p-2" key={comment.id}>
-                            
-                                <div>
-                                    <div className="flex gap-4 mt-4 items-center">
-                                        <h2>{comment.name}</h2>
-                                        <img className="w-12 rounded-full" src={comment.profilePic} alt="" />
-                                    </div >
-                                    <p>{comment.comment}</p>
-                                </div>
-                            
 
+                            <div>
+                                <div className="flex gap-4 mt-4 items-center">
+                                    <h2>{comment.name}</h2>
+                                    <img className="w-12 rounded-full" src={comment.profilePic} alt="" />
+                                </div >
+                                <p>{comment.comment}</p>
+                            </div>
                         </div>)
                 }
-
-
             </div>
         </div >
     );
