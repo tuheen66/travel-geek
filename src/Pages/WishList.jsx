@@ -10,15 +10,23 @@ const WishList = () => {
 
     const [wishes, setWishes] = useState([])
 
+    // user specific wishlist
+
     const url = `http://localhost:5000/wish?email=${user.email}`
 
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
             .then(data => setWishes(data))
-    }, [])
+    }, [url])
 
 
+    // send specific blog to the detail page
+
+
+
+
+    // remove from wishlist
 
     const handleRemove = _id => {
         console.log(_id)
@@ -37,6 +45,8 @@ const WishList = () => {
                 }
             })
     }
+
+
 
 
     return (

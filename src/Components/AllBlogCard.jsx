@@ -2,6 +2,8 @@
 
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import { Link } from "react-router-dom";
+
 
 
 const AllBlogCard = ({ blog }) => {
@@ -28,8 +30,29 @@ const AllBlogCard = ({ blog }) => {
             .then(data => {
                 console.log(data)
             })
-
     }
+
+
+
+
+    // const handleDetail = (item) => {
+
+    //     item = { image, title, short_description, category, email }
+
+    //     fetch('http://localhost:5000/details', {
+    //         method: 'POST',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(item)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //         })
+    // }
+
+
 
 
     return (
@@ -39,11 +62,14 @@ const AllBlogCard = ({ blog }) => {
                 <h2 className="card-title">{title}</h2>
 
                 <p><span className="font-bold">Category:</span> {category}</p>
-                
+
 
                 <p><span className="font-bold">Short description: </span>{short_description}</p>
                 <div className=" flex gap-4 ">
-                    <button className="btn btn-primary btn-sm">Details</button> <br />
+                    <Link to={`/blog-details/${blog?._id}`}>
+                        <button className="btn btn-primary btn-sm">Details</button> <br />
+                    </Link>
+
                     <button onClick={() => handleWishList(blog)} className="btn btn-secondary btn-sm">Wishlist</button>
                 </div>
             </div>

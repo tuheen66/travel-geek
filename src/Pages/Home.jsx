@@ -30,7 +30,7 @@ const Home = () => {
             <Banner></Banner>
             <div className="grid lg:grid-cols-12  h-auto">
                 <div className="bg-base-200 col-span-8 grid grid-cols-3 gap-4 pt-8">
-                    
+
                     {
                         blogs.map(blog => <BlogCard key={blog.id} blog={blog}></BlogCard>)
                     }

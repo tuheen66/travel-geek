@@ -7,36 +7,34 @@ import { useState } from "react";
 
 
 const categories = [
-    "Beach Destinations",
-    "Mountain Escapes",
-    "Cultural Experiences",
-    "Wildlife Encounters",
-    "Historical Sites",
-    "Island Getaways"
+    "Beach_Destinations",
+    "Mountain_Escapes",
+    "Cultural_Experiences",
+    "Wildlife_Encounters",
+    "Historical_Sites",
+    "Island_Getaways"
 ]
 
 const AllBlogs = () => {
 
     const [category, setCategory] = useState('')
 
-
-
-    // const getBlogs = axios.get(`http://localhost:5000/blogs?category=${category}`)
-    //     .then(data => {
-    //         console.log(data)
-    //     })
-
-    const { isPending, data: blogs } = useQuery({
+    const { isLoading, isPending, data: blogs } = useQuery({
         queryKey: ['blogs', category],
-        queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/blogs?category=${category}`)
-            return res.json();
-        }
+        queryFn:
+            async () => {
+                const res = await fetch(`http://localhost:5000/blogs/?category=${category}`)
+                return res.json();
+            }
     })
 
 
     if (isPending) {
         return
+    }
+
+    if (isLoading) {
+        return <p>Loading...</p>
     }
 
 
@@ -49,17 +47,13 @@ const AllBlogs = () => {
                 <select
                     onChange={(e) => setCategory(e.target.value)}
                     className=" p-2" id="category" name="category">
+
                     <option disabled selected value="Choose one">Chose one</option>
+
                     {categories.map((item) => (
                         <option key={item} value={item}>{item}</option>
                     ))}
 
-                    {/* <option value="Beach_Destinations">Beach Destinations</option>
-                    <option value="Mountain_Escapes">Mountain Escapes</option>
-                    <option value="Cultural_Experiences">Cultural Experiences</option>
-                    <option value="Wildlife_Encounters">Wildlife Encounters</option>
-                    <option value="Historical_Sites">Historical Sites</option>
-                    <option value="Island_Getaways">Island Getaways</option> */}
                 </select>
             </div>
 
@@ -68,7 +62,7 @@ const AllBlogs = () => {
 
                     {
                         blogs?.map(blog => <AllBlogCard key={blog.id} blog={blog}></AllBlogCard>)
-                        
+
                     }
 
                 </div>
