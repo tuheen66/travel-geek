@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/image/logo.png"
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
@@ -6,23 +6,26 @@ import { AuthContext } from "../providers/AuthProvider";
 
 const Navbar = () => {
 
+    const navigate = useNavigate()
+
     const { user, logOut } = useContext(AuthContext)
 
     const handleLogOut = () => {
         logOut()
             .then(res => {
                 console.log('user logged out', res)
+                navigate(location?.state ? location.state : '/login')
             })
             .catch(error => {
                 console.Log(error)
             })
     }
     const navbar =
-        <div className="flex align-items">
-            <li className="mr-2"><NavLink to='/'>Home</NavLink></li>
-            <li className="mr-2"><NavLink to="/addblogs">Add Blog</NavLink></li>
-            <li className="mr-2"><NavLink to='/allblogs'>All Blogs</NavLink></li>
-            <li className="mr-2"><NavLink to='/featured'>Featured Blog</NavLink></li>
+        <div className="flex justify-center align-items">
+            <li className=""><NavLink to='/'>Home</NavLink></li>
+            <li className=""><NavLink to="/addblogs">Add Blog</NavLink></li>
+            <li className=""><NavLink to='/allblogs'>All Blogs</NavLink></li>
+            <li className=""><NavLink to='/featured'>Featured Blog</NavLink></li>
             <li><NavLink to='/wish-list'>Wishlist</NavLink></li>
         </div>
 
@@ -55,7 +58,7 @@ const Navbar = () => {
                             <div className="w-10 rounded-full mr-2 ">
                                 <img className="w-8 lg:w-10  rounded-full " src={user.photoURL} />
                             </div>
-                            <button onClick={handleLogOut} className="btn bg-red-400 w-24 btn-sm mr-2">Logout</button>
+                            <button onClick={handleLogOut} className="btn bg-red-400 w-20 btn-sm mr-2">Logout</button>
                         </> :
                         <>
                             <Link to="/login"> <button className="btn bg-green-200 w-24 btn-sm mr-2">Login</button></Link>

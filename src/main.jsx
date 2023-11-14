@@ -22,6 +22,7 @@ import PrivateRout from './Components/PrivateRout';
 import WishList from './Pages/WishList';
 import FeaturedBlogs from './Pages/FeaturedBlogs';
 import DetailBlog from './Pages/DetailBlog';
+import UpdateBlogs from './Pages/UpdateBlogs';
 
 
 const router = createBrowserRouter([
@@ -61,7 +62,11 @@ const router = createBrowserRouter([
       {
         path: '/blog-details/:id',
         element: <DetailBlog></DetailBlog>,
-        //loader: (params) => fetch(`http://localhost:5000/blogs/${params.id}`)
+      },
+      {
+        path: '/update-blog/:_id',
+        element: <UpdateBlogs></UpdateBlogs>,
+        loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params._id}`)
       }
 
     ]

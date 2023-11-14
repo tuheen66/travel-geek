@@ -33,10 +33,12 @@ const Login = () => {
 
                 console.log(loggedInUser)
 
-                toast("Login successful")
-                //  navigate(location?.state ? location.state : '/')
+                navigate(location?.state ? location.state : '/')
 
-                setError('')
+                toast("Login successful")
+                    
+
+                    setError('')
 
                 axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
                     .then(res => {

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 // import { useLoaderData } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import { useContext, useEffect, useState } from "react";
 import Loader from "../Components/Loader";
@@ -14,7 +14,7 @@ const DetailBlog = () => {
     const { user } = useContext(AuthContext)
     const name = user?.displayName;
     const profilePic = user?.photoURL
-    console.log(user)
+
 
     const { id } = useParams()
     const [details, setDetails] = useState([])
@@ -84,9 +84,15 @@ const DetailBlog = () => {
                 <p className="text-justify"><span className="font-bold"> Long description:</span>{details.long_description} </p>
             </div>
             <div className={user.email !== details.email ? "hidden" : " flex justify-around mb-8"}>
+
+
                 <p className="italic font-semibold mb-8 text-red-400">Blog writer cannot comment on his/her own blog</p>
-                <button className="btn btn-accent">Update</button>
+                <Link to={`/update-blog/${details._id}`}>
+                    <button className="btn btn-accent">Update</button>
+                </Link>
             </div>
+
+
             <div className={user.email === details.email ? "hidden" : "w-1/3 mb-12 block"}>
                 <form onSubmit={handleCommentSubmit} className="flex flex-col space-y-4">
                     <label className="font-bold" htmlFor="long_description">Your Comment:</label>
