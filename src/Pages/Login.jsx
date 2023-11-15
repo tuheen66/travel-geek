@@ -29,21 +29,16 @@ const Login = () => {
             .then(res => {
                 console.log(res.user)
                 const loggedInUser = res.user
-                const user = { email }
+                // const user = { email }
 
                 console.log(loggedInUser)
 
                 navigate(location?.state ? location.state : '/')
 
                 toast("Login successful")
-                    
 
-                    setError('')
+                setError('')
 
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
-                    .then(res => {
-                        console.log(res.data)
-                    })
             })
             .catch(error => {
                 console.log(error)

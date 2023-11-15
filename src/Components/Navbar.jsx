@@ -15,6 +15,8 @@ const Navbar = () => {
             .then(res => {
                 console.log('user logged out', res)
                 navigate(location?.state ? location.state : '/login')
+
+                
             })
             .catch(error => {
                 console.Log(error)
@@ -30,7 +32,7 @@ const Navbar = () => {
         </div>
 
     return (
-        <div className="navbar bg-base-200 flex border-b border-gray-300">
+        <div className="navbar bg-base-200 flex justify-evenly border-b border-gray-300">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
