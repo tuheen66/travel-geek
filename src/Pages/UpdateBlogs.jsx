@@ -1,5 +1,5 @@
-import {  useLoaderData, useNavigate } from "react-router-dom";
-import Navbar from "../Components/Navbar";
+import { useLoaderData, useNavigate } from "react-router-dom";
+
 
 
 
@@ -8,8 +8,8 @@ const UpdateBlogs = () => {
 
     const navigate = useNavigate();
 
-     const blogs = useLoaderData()
-    
+    const blogs = useLoaderData()
+
 
     // const { data: blogs } = useQuery({
     //     queryKey: ['blogs'],
@@ -45,14 +45,11 @@ const UpdateBlogs = () => {
             .then(data => {
                 console.log(data)
             })
-            navigate(location?.state ? location.state : '/')
+        navigate(location?.state ? location.state : '/')
     }
 
     return (
         <div>
-            <Navbar></Navbar>
-
-
             <h2 className="text-3xl font-bold my-4 text-center">Update your Blog</h2>
 
             <div className="w-1/2 mx-auto bg-green-200 p-8">

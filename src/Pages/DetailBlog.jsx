@@ -2,7 +2,6 @@
 /* eslint-disable react/prop-types */
 // import { useLoaderData } from "react-router-dom";
 import { Link, useParams } from "react-router-dom";
-import Navbar from "../Components/Navbar";
 import { useContext, useEffect, useState } from "react";
 import Loader from "../Components/Loader";
 import { AuthContext } from "../providers/AuthProvider";
@@ -76,7 +75,7 @@ const DetailBlog = () => {
 
     return (
         <div>
-            <Navbar></Navbar>
+
             <div className="w-8/12 mx-auto space-y-4 mb-12">
                 <img className="mt-12" src={details.image} alt="" />
                 <h2 className="text-2xl font-bold"> {details.title}</h2>

@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import Navbar from "../Components/Navbar";
 import { AuthContext } from "../providers/AuthProvider";
 
 
@@ -9,6 +8,8 @@ const AddBlogs = () => {
     const { user } = useContext(AuthContext)
 
     const email = user?.email
+    const name = user?.displayName
+    const profile_pic = user?.photoURL
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -22,7 +23,7 @@ const AddBlogs = () => {
 
 
 
-        const newBlog = { title, image, category, short_description, long_description, time, email }
+        const newBlog = { title, image, category, short_description, long_description, time, email, name, profile_pic }
 
         console.log(newBlog)
 
@@ -45,7 +46,7 @@ const AddBlogs = () => {
 
     return (
         <div>
-            <Navbar></Navbar>
+
             <h2 className="text-3xl font-bold my-4 text-center">Add a new Blog</h2>
 
             <div className="w-1/2 mx-auto bg-green-200 p-8">

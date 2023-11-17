@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Navbar from "../Components/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -70,7 +69,6 @@ const Register = () => {
 
     return (
         <div>
-            <Navbar></Navbar>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col w-1/2 ">
                     <div className="text-center lg:text-left">

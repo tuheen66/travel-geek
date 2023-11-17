@@ -1,6 +1,5 @@
 import AllBlogCard from "../Components/AllBlogCard";
 import { useQuery } from "@tanstack/react-query";
-import Navbar from "../Components/Navbar";
 import { useState } from "react";
 // import axios from "axios";
 
@@ -56,18 +55,9 @@ const AllBlogs = () => {
         return <p>Loading...</p>
     }
 
-    // const handleSearch = (e) => {
-    //     e.preventDefault()
-    //     const form = e.target;
-    //     const search = form.search.value;
-    //     console.log('search handle', search)
-
-    // }
-
 
     return (
         <div>
-            <Navbar></Navbar>
 
             <div className="flex justify-between mt-4">
 
@@ -88,7 +78,7 @@ const AllBlogs = () => {
 
                     <div >
                         <label >Search for Blog Title</label>
-                        <input onChange={(e) => setTitle(e.target.value)} type="text" name="search" placeholder="Search...." className="input input-bordered w-full max-w-xs mt-4" />
+                        <input onChange={(e) => setTitle(e.target.value)} type="text" name="search" placeholder="Search...." className="input input-bordered w-full max-w-xs mt-2" />
                     </div>
 
                 </div>

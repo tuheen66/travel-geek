@@ -1,5 +1,4 @@
 
-import Navbar from "../Components/Navbar";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
@@ -51,7 +50,6 @@ const WishList = () => {
 
     return (
         <div>
-            <Navbar></Navbar>
             <div className="grid grid-cols-2 gap-8 my-12">
 
                 {wishes.map(wish =>
