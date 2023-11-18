@@ -23,7 +23,7 @@ const Navbar = () => {
             })
     }
     const navbar =
-        <div className="flex justify-center align-items">
+        <div className="flex flex-col md:flex-col lg:flex-row justify-center align-items">
             <li className=""><NavLink to='/'>Home</NavLink></li>
             <li className=""><NavLink to="/addblogs">Add Blog</NavLink></li>
             <li className=""><NavLink to='/allblogs'>All Blogs</NavLink></li>
@@ -32,7 +32,7 @@ const Navbar = () => {
         </div>
 
     return (
-        <div className="navbar bg-base-200 flex justify-evenly border-b border-gray-300">
+        <div className="navbar bg-base-200 flex flex-col  md:flex-row lg:flex-col lg:justify-center xl:flex-row border-b border-gray-300">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -45,14 +45,14 @@ const Navbar = () => {
                 <div>
                     <img className="w-12" src={logo} alt="" />
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">THE TRAVEL GEEK </a>
+                <a className="font-bold normal-case text-xl">THE TRAVEL GEEK </a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {navbar}
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end ml-36 md:ml-0 ">
                 {
                     user ?
                         <>

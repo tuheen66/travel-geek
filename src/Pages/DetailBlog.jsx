@@ -76,7 +76,7 @@ const DetailBlog = () => {
     return (
         <div>
 
-            <div className="w-8/12 mx-auto space-y-4 mb-12">
+            <div className="lg:w-8/12 mx-auto space-y-4 mb-12">
                 <img className="mt-12" src={details.image} alt="" />
                 <h2 className="text-2xl font-bold"> {details.title}</h2>
                 <p><span className="font-bold">Short description:</span> {details.short_description}</p>

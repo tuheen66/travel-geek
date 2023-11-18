@@ -50,16 +50,17 @@ const WishList = () => {
 
     return (
         <div>
-            <div className="grid grid-cols-2 gap-8 my-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
 
-                {wishes.map(wish =>
-                    <div key={wish._id} className="card card-side bg-blue-100 shadow-xl pl-2 mb-8">
+                {wishes?.map(wish =>
+                    <div key={wish._id} className="card xl:card-side bg-blue-100 shadow-xl pl-2 mb-8">
                         <figure><img id="image" src={wish.image} /></figure>
                         <div className="card-body ">
                             <h2 id='title' className="card-title">{wish.title}</h2>
                             <p id="short_des" ><span className="font-bold">Short description:</span > {wish.short_description}</p>
                             <p id="category" ><span className="font-bold">Category:</span> {wish.category}</p>
                             <div className=" flex gap-4 ">
+                                
                                 <button className="btn btn-primary btn-sm">Details</button> <br />
                                 <button onClick={() => handleRemove(wish._id)} className="btn btn-secondary btn-sm">Remove</button>
                             </div>

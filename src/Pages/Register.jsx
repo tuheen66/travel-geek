@@ -70,7 +70,7 @@ const Register = () => {
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col w-1/2 ">
+                <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Please Register!</h1>
 
@@ -107,7 +107,7 @@ const Register = () => {
                                     placeholder="password"
                                     className="input input-bordered"
                                     required />
-                                <span className="absolute mt-12 ml-64 pt-1 " onClick={() => setShowPassword(!showPassword)}>
+                                <span className="absolute mt-12 ml-64 pt-1  " onClick={() => setShowPassword(!showPassword)}>
                                     {
                                         showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
                                     }
