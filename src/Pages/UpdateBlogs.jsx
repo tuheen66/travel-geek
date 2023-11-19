@@ -11,16 +11,7 @@ const UpdateBlogs = () => {
     const blogs = useLoaderData()
 
 
-    // const { data: blogs } = useQuery({
-    //     queryKey: ['blogs'],
-    //     queryFn: async () => {
-    //         const res = await fetch(`http://localhost:5000/blogs/${useParams.id}`);
-    //         return res.json()
-    //     }
-    // })
-
-
-    const handleUpdate = e => {
+       const handleUpdate = e => {
         e.preventDefault()
         const form = e.target;
         const title = form.title.value;
@@ -34,7 +25,7 @@ const UpdateBlogs = () => {
         const updateBlog = { title, image, category, short_description, long_description, time }
 
 
-        fetch(`http://localhost:5000/blogs/${blogs._id}`, {
+        fetch(`https://blog-website-server-ten.vercel.app/blogs/${blogs._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

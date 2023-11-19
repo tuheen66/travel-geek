@@ -21,7 +21,7 @@ const DetailBlog = () => {
     const [comments, setComments] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/comments')
+        axios.get('https://blog-website-server-ten.vercel.app/comments')
             .then(data => {
                 const items = data.data
                 const blogComments = items.filter(item => item.id === id)
@@ -33,7 +33,7 @@ const DetailBlog = () => {
 
     useEffect(() => {
         setLoading(true)
-        fetch('http://localhost:5000/blogs')
+        fetch('https://blog-website-server-ten.vercel.app/blogs')
             .then(res => res.json())
             .then(data => {
 
@@ -57,7 +57,7 @@ const DetailBlog = () => {
 
         blogItem = { comment, name, profilePic, id }
 
-        fetch('http://localhost:5000/comments', {
+        fetch('https://blog-website-server-ten.vercel.app/comments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

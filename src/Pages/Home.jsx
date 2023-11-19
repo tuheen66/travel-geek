@@ -14,7 +14,7 @@ const Home = () => {
     const { isPending, data: blogs } = useQuery({
         queryKey: ['blogs'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/blogs');
+            const res = await fetch('https://blog-website-server-ten.vercel.app/blogs');
             return res.json()
         }
     })

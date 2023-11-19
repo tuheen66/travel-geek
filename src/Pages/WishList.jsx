@@ -11,7 +11,7 @@ const WishList = () => {
 
     // user specific wishlist
 
-    const url = `http://localhost:5000/wish?email=${user.email}`
+    const url = `https://blog-website-server-ten.vercel.app/wish?email=${user.email}`
 
     useEffect(() => {
         fetch(url, { credentials: 'include' })
@@ -29,7 +29,7 @@ const WishList = () => {
 
     const handleRemove = _id => {
         console.log(_id)
-        fetch(`http://localhost:5000/wish/${_id}`, {
+        fetch(`https://blog-website-server-ten.vercel.app/wish/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -60,7 +60,7 @@ const WishList = () => {
                             <p id="short_des" ><span className="font-bold">Short description:</span > {wish.short_description}</p>
                             <p id="category" ><span className="font-bold">Category:</span> {wish.category}</p>
                             <div className=" flex gap-4 ">
-                                
+
                                 <button className="btn btn-primary btn-sm">Details</button> <br />
                                 <button onClick={() => handleRemove(wish._id)} className="btn btn-secondary btn-sm">Remove</button>
                             </div>

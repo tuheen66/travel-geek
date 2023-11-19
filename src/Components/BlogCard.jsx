@@ -16,7 +16,7 @@ const BlogCard = ({ blog }) => {
         blogItem = { image, title, short_description, category, email }
 
 
-        fetch('http://localhost:5000/blogs/wish', {
+        fetch('https://blog-website-server-ten.vercel.app/blogs/wish', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

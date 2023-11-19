@@ -26,7 +26,7 @@ const AllBlogs = () => {
         queryFn:
             async () => {
 
-                let url = `http://localhost:5000/blogs`;
+                let url = `https://blog-website-server-ten.vercel.app/blogs`;
 
                 if (category || title) {
                     url += '?';

@@ -27,7 +27,7 @@ const AddBlogs = () => {
 
         console.log(newBlog)
 
-        fetch('http://localhost:5000/blogs', {
+        fetch('https://blog-website-server-ten.vercel.app/blogs', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

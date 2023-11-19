@@ -55,7 +55,7 @@ const Login = () => {
                 console.log(loggedInUser)
                 navigate(location?.state ? location.state : '/')
 
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                axios.post('https://blog-website-server-ten.vercel.app/jwt', user, { withCredentials: true })
                     .then(res => {
                         console.log(res.data)
                     })

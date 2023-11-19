@@ -13,13 +13,13 @@ const FeaturedBlogs = () => {
             name: 'Srl No',
             cell: (row, index) => index + 1,
             width: "8rem",
-            
+
 
         },
         {
             name: 'Blog Title',
             selector: row => row.title,
-            width:"28rem"
+            width: "28rem"
         },
         {
             name: 'Blog Owner',
@@ -29,7 +29,7 @@ const FeaturedBlogs = () => {
         {
             name: 'Profile Picture',
             selector: (row) => <img className="w-16 mb-6 rounded-full" src={row.profile_pic} />,
-            width:"8rem"
+            width: "8rem"
         },
 
     ]
@@ -38,7 +38,7 @@ const FeaturedBlogs = () => {
     const { data } = useQuery({
         queryKey: ['blogs'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/blogs')
+            const res = await fetch('https://blog-website-server-ten.vercel.app/blogs')
             return res.json();
         }
     })
