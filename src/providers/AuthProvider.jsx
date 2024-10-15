@@ -1,85 +1,94 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-import auth from './../firebase/firebase.config';
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import auth from "./../firebase/firebase.config";
 import axios from "axios";
 
-
-export const AuthContext = createContext(null)
-const googleProvider = new GoogleAuthProvider()
+export const AuthContext = createContext(null);
+const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(true)
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-    const createUser = (email, password) => {
-        setLoading(true)
-        return createUserWithEmailAndPassword(auth, email, password)
-    }
+  const signInUser = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-    const signInUser = (email, password) => {
-        setLoading(true)
-        return signInWithEmailAndPassword(auth, email, password)
-    }
+  const googleSignIn = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
 
-    const googleSignIn = () => {
-        setLoading(true)
-        return signInWithPopup(auth, googleProvider);
-    }
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
-    const logOut = () => {
-        setLoading(true)
-        return signOut(auth)
-    }
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
+      setUser(currentUser);
+      // console.log("observe current user", currentUser);
 
-    useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, currentUser => {
+      // if uer exists
 
-            const userEmail = currentUser?.email || user?.email
-            const loggedUser = { email: userEmail }
-            setUser(currentUser)
-            console.log('observe current user', currentUser)
-            setLoading(false)
-            // if uer exists
-
-            if (currentUser) {
-                axios.post('https://blog-website-server-ten.vercel.app/jwt', loggedUser, { withCredentials: true })
-                    .then(res => {
-                        console.log('token response', res.data)
-                    })
+      if (currentUser) {
+        axios
+          .post("https://blog-website-server-ten.vercel.app/jwt", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            // console.log("token response", res.data);
+            setLoading(false);
+          });
+      } else {
+        axios
+          .post(
+            "https://blog-website-server-ten.vercel.app/logout",
+            loggedUser,
+            {
+              withCredentials: true,
             }
-            else {
-                axios.post('https://blog-website-server-ten.vercel.app/logout', loggedUser, {
-                    withCredentials: true
-                })
-                    .then(res => {
-                        console.log(res.data)
-                    })
-            }
+          )
+          .then((res) => {
+            console.log(res.data);
+          });
+        setLoading(false);
+      }
+    });
+    return () => {
+      unSubscribe();
+    };
+  }, []);
 
-        });
-        return () => {
-            unSubscribe()
-        }
-    }, [])
+  const authInfo = {
+    user,
+    loading,
+    createUser,
+    signInUser,
+    googleSignIn,
+    logOut,
+  };
 
-
-    const authInfo = {
-        user,
-        loading,
-        createUser,
-        signInUser,
-        googleSignIn,
-        logOut
-    }
-
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
